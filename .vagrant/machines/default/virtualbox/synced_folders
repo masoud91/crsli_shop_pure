@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html":{"owner":"vagrant","group":"vagrant","guestpath":"/var/www/html","hostpath":"/home/masoud/dev/phproot/crsli/shop_pure","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/masoud/dev/phproot/crsli/shop_pure","disabled":false,"__vagrantfile":true}}}
