@@ -1,12 +1,6 @@
 <?php
 
-$servername = "localhost";
-$username = "test";
-$password = "123456";
-$dbname = "crsli_shop_pure";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+require_once "../modules/db.php";
 
 // Check connection
 if (!$conn) {

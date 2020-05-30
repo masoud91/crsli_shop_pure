@@ -1,17 +1,6 @@
 <?php
 
-$servername = "localhost";
-$username = "test";
-$password = "123456";
-$dbname = "crsli_shop_pure";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+require_once "../modules/db.php";
 
 $id = $_GET['id'];
 
