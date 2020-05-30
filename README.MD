@@ -2,11 +2,12 @@
 
 ### Project initialize instruction
 
-create a file inside config with name common.php and set your db config like the
+create config/local.php and set your db config like the
 example below.
 
 ```php
 <?php
+# config/local.php
 
 return [
     'db' => [
