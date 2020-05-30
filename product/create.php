@@ -1,5 +1,16 @@
-<form method="post" action="create_perform.php">
+<?php
 
+session_start();
+
+if( isset($_SESSION['error']) && $_SESSION['error'] === true ) {
+    echo "<h3>{$_SESSION['error_msg']}</h3>";
+    $_SESSION['error'] = false;
+//    session_destroy();
+}
+
+?>
+
+<form method="post" action="create_perform.php">
     <p>
         <label>
             Name <br>

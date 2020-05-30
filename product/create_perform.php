@@ -1,21 +1,19 @@
 <?php
 
-$servername = "localhost";
-$username = "test";
-$password = "123456";
-$dbname = "crsli_shop_pure";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+require_once "../modules/db.php";
 
 $name = $_POST['name'];
 $price = $_POST['price'];
 $remain = $_POST['remain'];
+
+if (empty($name) || empty($price) ) {
+//    header("Location: create.php?error=1&message=Name and Price are required");
+    session_start();
+    $_SESSION['error'] = true;
+    $_SESSION['error_msg'] = 'Name and Price are required';
+    header("Location: create.php");
+    die();
+}
 
 $sql = "INSERT INTO product (name, price, remain) VALUES ('$name', '$price', '$remain')";
 
