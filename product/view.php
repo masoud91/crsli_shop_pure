@@ -11,7 +11,7 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 <a style="display: inline-block; padding: 10px" href="update.php?id=<?= $id ?>">Update</a>
-<a style="display: inline-block; padding: 10px" href="delete.php?id=<?= $id ?>">Delete</a>
+<a style="display: inline-block; padding: 10px" href="delete_perform.php?id=<?= $id ?>">Delete</a>
 
 <?php if( mysqli_num_rows($result) > 0 ) : ?>
     <h3>ID: <?= $row['id'] ?></h3>

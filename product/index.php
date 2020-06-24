@@ -48,6 +48,7 @@ $result = mysqli_query($conn, $sql);
             <th>name</th>
             <th>price</th>
             <th>remain</th>
+            <th>category</th>
             <th>CDT</th>
             <th colspan="3">actions</th>
         </tr>
@@ -58,6 +59,7 @@ $result = mysqli_query($conn, $sql);
             <td><?= $row['name'] ?></td>
             <td><?= $row['price'] ?></td>
             <td><?= $row['remain'] ?></td>
+            <td><?= $row['category_id'] ?></td>
             <td><?= $row['cdt'] ?></td>
             <td><a href='view.php?id=<?= $row['id'] ?>'>View</a></td>
             <td><a href='update.php?id=<?= $row['id'] ?>'>Update</a></td>
