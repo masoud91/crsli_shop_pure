@@ -2,7 +2,12 @@
 
 require_once "../modules/db.php";
 
-$sql = "SELECT * FROM product";
+$sql = "SELECT 
+            product.*, 
+            category.name as category_name 
+        FROM product
+        INNER JOIN category
+        ON product.category_id = category.id";
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -55,11 +60,12 @@ $result = mysqli_query($conn, $sql);
         
     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
         <tr>
+            <!--<td><?php /*var_dump($row) */?></td>-->
             <td><?= $row['id'] ?></td>
             <td><?= $row['name'] ?></td>
             <td><?= $row['price'] ?></td>
             <td><?= $row['remain'] ?></td>
-            <td><?= $row['category_id'] ?></td>
+            <td><?= $row['category_name'] ?></td>
             <td><?= $row['cdt'] ?></td>
             <td><a href='view.php?id=<?= $row['id'] ?>'>View</a></td>
             <td><a href='update.php?id=<?= $row['id'] ?>'>Update</a></td>

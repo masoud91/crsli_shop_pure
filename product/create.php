@@ -8,6 +8,11 @@ if( isset($_SESSION['error']) && $_SESSION['error'] === true ) {
 //    session_destroy();
 }
 
+require_once "../modules/db.php";
+
+$sql = "SELECT id, name FROM category";
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 <form method="post" action="create_perform.php">
@@ -29,6 +34,17 @@ if( isset($_SESSION['error']) && $_SESSION['error'] === true ) {
         <label>
             Remain <br>
             <input name="remain" type="number" min="0">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Category <br>
+            <select name="category_id">
+                <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                    <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                <?php endwhile; ?>
+            </select>
         </label>
     </p>
 

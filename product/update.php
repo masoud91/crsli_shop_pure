@@ -9,6 +9,9 @@ $result = mysqli_query($conn, $sql);
 
 $row = mysqli_fetch_assoc($result);
 
+$catSql = "SELECT id, name FROM category";
+$catResult = mysqli_query($conn, $catSql);
+
 ?>
 <!--<form method="post" action="update_perform.php?id=<?/*= $id */?>">-->
 <form method="post" action="update_perform.php">
@@ -33,6 +36,19 @@ $row = mysqli_fetch_assoc($result);
         <label>
             Remain <br>
             <input name="remain" type="number" min="0" value="<?= $row['remain'] ?>">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Category <br>
+            <select name="category_id">
+                <?php while ($cartRow = mysqli_fetch_assoc($catResult)) : ?>
+                    <option value="<?= $cartRow['id'] ?>" <?php if ($cartRow['id'] == $row['category_id']) echo 'selected' ?>>
+                        <?= $cartRow['name'] ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
         </label>
     </p>
 

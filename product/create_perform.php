@@ -5,6 +5,7 @@ require_once "../modules/db.php";
 $name = $_POST['name'];
 $price = $_POST['price'];
 $remain = $_POST['remain'];
+$category = $_POST['category_id'];
 
 if (empty($name) || empty($price) ) {
 //    header("Location: create.php?error=1&message=Name and Price are required");
@@ -15,7 +16,7 @@ if (empty($name) || empty($price) ) {
     die();
 }
 
-$sql = "INSERT INTO product (name, price, remain) VALUES ('$name', '$price', '$remain')";
+$sql = "INSERT INTO product (name, price, remain, category_id) VALUES ('$name', '$price', '$remain' , '$category')";
 
 if (mysqli_query($conn, $sql)) {
 //    echo "New record created successfully";
