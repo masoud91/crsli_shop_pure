@@ -1,6 +1,6 @@
 <?php
 
-require_once "../modules/db.php";
+require_once "../modules/db_oo.php";
 
 $sql = "SELECT 
             product.*, 
@@ -8,7 +8,8 @@ $sql = "SELECT
         FROM product
         INNER JOIN category
         ON product.category_id = category.id";
-$result = mysqli_query($conn, $sql);
+
+$result = $conn->query($sql);
 
 ?>
 
@@ -45,7 +46,7 @@ $result = mysqli_query($conn, $sql);
 }*/
 ?>
 
-<?php if (mysqli_num_rows($result) > 0) : ?>
+<?php if ($result->num_rows > 0) : ?>
 
     <table border="1" cellpadding="10">
         <tr>
@@ -58,7 +59,7 @@ $result = mysqli_query($conn, $sql);
             <th colspan="3">actions</th>
         </tr>
         
-    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+    <?php while ($row = $result->fetch_assoc()) : ?>
         <tr>
             <!--<td><?php /*var_dump($row) */?></td>-->
             <td><?= $row['id'] ?></td>
@@ -80,5 +81,5 @@ $result = mysqli_query($conn, $sql);
 <?php endif; ?>
 
 <?php
-mysqli_close($conn);
+$conn->close();
 

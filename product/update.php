@@ -1,16 +1,16 @@
 <?php
 
-require_once "../modules/db.php";
+require_once "../modules/db_oo.php";
 
 $id = $_GET['id'];
 
 $sql = "SELECT * FROM product where id = $id";
-$result = mysqli_query($conn, $sql);
+$result = $conn->query($sql);
 
-$row = mysqli_fetch_assoc($result);
+$row = $result->fetch_assoc();;
 
 $catSql = "SELECT id, name FROM category";
-$catResult = mysqli_query($conn, $catSql);
+$catResult = $conn->query($sql);
 
 ?>
 <!--<form method="post" action="update_perform.php?id=<?/*= $id */?>">-->
@@ -43,7 +43,7 @@ $catResult = mysqli_query($conn, $catSql);
         <label>
             Category <br>
             <select name="category_id">
-                <?php while ($cartRow = mysqli_fetch_assoc($catResult)) : ?>
+                <?php while ($cartRow = $catResult->fetch_assoc()) : ?>
                     <option value="<?= $cartRow['id'] ?>" <?php if ($cartRow['id'] == $row['category_id']) echo 'selected' ?>>
                         <?= $cartRow['name'] ?>
                     </option>
@@ -66,3 +66,6 @@ $catResult = mysqli_query($conn, $catSql);
     </p>
 
 </form>
+
+<?php
+$conn->close();

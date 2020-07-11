@@ -1,6 +1,6 @@
 <?php
 
-require_once "../modules/db.php";
+require_once "../modules/db_oo.php";
 
 $name = $_POST['name'];
 $price = $_POST['price'];
@@ -18,12 +18,12 @@ if (empty($name) || empty($price) ) {
 
 $sql = "INSERT INTO product (name, price, remain, category_id) VALUES ('$name', '$price', '$remain' , '$category')";
 
-if (mysqli_query($conn, $sql)) {
+if ($conn->query($sql)) {
 //    echo "New record created successfully";
     header("Location: index.php");
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-mysqli_close($conn);
+$conn->close();
 

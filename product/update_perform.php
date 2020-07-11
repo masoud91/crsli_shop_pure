@@ -1,11 +1,6 @@
 <?php
 
-require_once "../modules/db.php";
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+require_once "../modules/db_oo.php";
 
 $id = $_REQUEST['id'];
 
@@ -15,12 +10,12 @@ $remain = $_POST['remain'];
 
 $sql = "UPDATE product set name = '$name', price = '$price', remain = '$remain' WHERE id = $id";
 
-if (mysqli_query($conn, $sql)) {
+if ($conn->query($sql)) {
 //    echo "New record created successfully";
     header("Location: index.php");
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-mysqli_close($conn);
+$conn->close();
 
